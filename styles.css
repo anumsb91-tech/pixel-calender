@@ -170,7 +170,7 @@ select {
   display:grid;
   grid-template-columns:repeat(7,1fr);
   gap:1px;
-  margin:1px 0;
+  margin:0px 0;
 }
 
 .day {
