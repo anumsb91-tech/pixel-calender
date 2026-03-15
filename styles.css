@@ -1,0 +1,373 @@
+:root {
+  --widget-bg: #edd3f3;
+  --border-color: #a494f8;
+  --hover-color:rgb(132, 201, 116);
+  --day-bg: #edccfa;
+}
+
+
+body.pink {
+  --bg-color: #ffe4f2;
+  --border-color:#ff8fcf;
+  --hover-color:#8fffaf;
+  --day-bg:var(--bg-color);
+  --widget-bg:#fcb6da;
+}
+
+body.lavender {
+  --bg-color: #f3e8ff;
+  --border-color:#c084fc;
+  --hover-color:#c084fc;
+  --day-bg:var(--day-bg)
+}
+
+body.mint {
+  --bg-color: #dcfce7;
+  --border-color:#34d399;
+  --hover-color:#78a9e8;
+  --day-bg:#b1f0d9;
+  --widget-bg:#a7e1cc;
+}
+
+body.yellow {
+  --bg-color: #fff9c4;
+  --border-color: #facc15;
+  --hover-color: #eb9d81;
+  --widget-bg:#f8dd70;
+  --day-bg:#efc0aa;
+}
+
+body {
+  background:var(--bg-color);
+  margin:0;
+  color: #333;
+  font-family: 'Press Start 2P', cursive;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+  transition: background 0.5s ease;
+  min-height: 100vh;
+}
+
+.widget {
+  width: 410px;
+  height: 410px;
+  background: var(--widget-bg);
+  padding:25px;
+  border:6px solid var(--border-color);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 0.6s ease;
+  position: relative;
+}
+
+.widget h2 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 1.2em;
+  user-select: none;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:scale(0.95);}
+  to {opacity:1; transform:scale(1);}
+}
+
+/* Sticker Panel */
+#sticker-panel {
+  margin-bottom: 10px;
+  padding: 9px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 40px;
+  border: 2px solid var(--border-color);
+}
+
+#sticker-panel h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.9em;
+}
+
+.sticker-help {
+  font-size: 0.5em;
+  margin: 5px 0 10px 0;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+#sticker-list {
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap;
+}
+
+.sticker-option {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: all 0.2s ease;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  padding: 0px;
+  object-fit: contain;
+}
+
+.sticker-option:hover {
+  transform: scale(1.2);
+  border-color: var(--border-color);
+}
+
+.sticker-option.selected {
+  border-color: var(--hover-color);
+  background: rgba(255,255,255,0.8);
+  transform: scale(1.15);
+  box-shadow: 0 0 10px var(--hover-color);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.controls button {
+  background: var(--border-color);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.1em;
+  transition: all 0.2s ease;
+}
+
+.controls button:hover {
+  background: var(--hover-color);
+  transform: scale(1.1);
+}
+
+#monthLabel {
+  font-size: 0.7em;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 3px solid var(--border-color);
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7em;
+  background: white;
+  cursor: pointer;
+}
+
+/* Calendar Grid */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:1px;
+  margin:1px 0;
+}
+
+.day {
+  width:30px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--border-color);
+  background: var(--day-bg);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 0.5em;
+  position: relative;
+}
+
+.day:hover {
+  animation: bounce 0.4s ease;
+  background: var(--hover-color);
+  color:white;
+  box-shadow: 0 0 15px var(--hover-color);
+  z-index: 10;
+}
+
+/* Sticker on date */
+.date-sticker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 2px;
+  right: 2px;
+  image-rendering: pixelated;
+  pointer-events: none;
+  z-index: 2;
+  
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1.2); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  100% { transform: scale(1); }
+}
+
+/* Sparkle effect */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--hover-color);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkle 0.8s ease forwards;
+  z-index: 1000;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-30px);
+  }
+}
+
+/* Floating Background Art */
+#floating-art {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-sticker {
+  position: absolute;
+  width: 50px;
+  image-rendering: pixelated;
+  animation: floatUp linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(-120px) rotate(360deg);
+  }
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.hidden {
+  display:none;
+}
+
+.popup-content {
+  background: var(--widget-bg);
+  padding:25px;
+  border:5px solid var(--border-color);
+  border-radius:20px;
+  width:300px;
+  text-align:center;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-content h3 {
+  margin: 0 0 15px 0;
+  font-size: 1em;
+}
+
+textarea {
+  width:100%;
+  min-height:100px;
+  margin:10px 0;
+  padding: 10px;
+  border: 3px solid var(--border-color);
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6em;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+button {
+  background: var(--border-color);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7em;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .widget {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .day {
+    width: 38px;
+    height: 38px;
+    font-size: 0.7em;
+  }
+  
+  .sticker-option {
+    width: 28px;
+    height: 28px;
+  }
+}

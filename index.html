@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Calendar Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<link rel="manifest" href="manifest.json">
+
+</head>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+<body class="pink">
+<div id="floating-art"></div>
+
+<div class="widget" id="widget">
+  <h2 style="cursor: move;">✿ Pixel Calendar ✿</h2>
+  
+  <div id="sticker-panel">
+    <h4>Stickers ✿</h4>
+    <p class="sticker-help">Click a sticker, then click a date to place it!</p>
+    <div id="sticker-list"></div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevMonth()">◀</button>
+    <span id="monthLabel"></span>
+    <button onclick="nextMonth()">▶</button>
+  </div>
+
+  <select id="themeSelect">
+    <option value="pink">Pink</option>
+    <option value="lavender">Lavender</option>
+    <option value="mint">Mint</option>
+    <option value="yellow">Yellow</option>
+  </select>
+
+  <div id="calendar" class="grid"></div>
+
+  <button onclick="exportPDF()" style="margin-top: 10px;">Export to PDF</button>
+</div>
+ 
+
+<!-- Note Popup -->
+<div id="notePopup" class="popup hidden">
+  <div class="popup-content">
+    <h3>Add Note ✿</h3>
+    <textarea id="popupNote" placeholder="Write your note here..."></textarea>
+    <div class="popup-buttons">
+      <button id="saveNote">Save</button>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
