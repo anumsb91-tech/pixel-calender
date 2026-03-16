@@ -39,14 +39,14 @@ body.yellow {
 
 body {
   background:var(--bg-color);
-  margin:0;
+  margin:20px;
   color: #333;
   font-family: 'Press Start 2P', cursive;
   display:flex;
   justify-content:center;
   padding:20px;
-  transition: background 0.5s ease;
-  min-height: 100vh;
+  transition: 0.5s ease;
+  min-height: 120vh;
 }
 
 .widget {
@@ -136,7 +136,7 @@ body {
   background: var(--border-color);
   border: none;
   color: white;
-  padding: 8px 15px;
+  padding: 2px 12px;
   cursor: pointer;
   border-radius: 5px;
   font-family: 'Press Start 2P', cursive;
